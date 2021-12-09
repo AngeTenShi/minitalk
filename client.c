@@ -6,21 +6,41 @@
 /*   By: anggonza <anggonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 15:30:39 by anggonza          #+#    #+#             */
-/*   Updated: 2021/12/07 16:16:35 by anggonza         ###   ########.fr       */
+/*   Updated: 2021/12/09 17:52:39 by anggonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <unistd.h>
 
-int	client(int pid, char *buffer)
+void	client(int pid, char *buffer)
 {
-	if (pid == 0)
+	int	i;
+	int	j;
+	int	*temp_send;
+
+	i = 0;
+	j = 0;
+	while (buffer[i])
 	{
-		kill(pid, SIGUSR1);
+		temp_send = atob(buffer[i]);
+		while (j < 8)
+		{
+			if (temp_send[j] == 1)
+				kill(pid, SIGUSR1);
+			else
+				kill(pid, SIGUSR2);
+			j++;
+		}
+		usleep(500);
+		temp_send = 0;
+		free(temp_send);
+		i++;
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	client(atoi(argv[0]), argv[1]);
+	kill(atoi(argv[1]), SIGUSR1);
+	//client(3166, "test");
 }
