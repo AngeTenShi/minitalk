@@ -6,34 +6,40 @@
 /*   By: anggonza <anggonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 15:07:07 by anggonza          #+#    #+#             */
-/*   Updated: 2021/12/09 17:57:29 by anggonza         ###   ########.fr       */
+/*   Updated: 2021/12/10 14:10:37 by anggonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <stdio.h>
 
-int	g_buffer[8];
-int	g_i;
+t_vars	g_vars;
 
-void	signal_handler(int signum)
+void	sighandler(int signum)
 {
-	printf("Rentre");
 	if (signum == SIGUSR1)
 	{
-		g_buffer[g_i] = 1;
-		g_i++;
+		g_vars.buffer[g_vars.i] = 1;
+		g_vars.i++;
 	}
 	if (signum == SIGUSR2)
 	{
-		g_buffer[g_i] = 0;
-		g_i++;
+		g_vars.buffer[g_vars.i] = 0;
+		g_vars.i++;
 	}
 }
 
 int	main(void)
 {
-	signal(SIGUSR1, signal_handler);
-	signal(SIGUSR2, signal_handler);
-	while (1);
+	printf("%d\n", getpid());
+	g_vars.i = 0;
+	signal(SIGUSR1, sighandler);
+	signal(SIGUSR2, sighandler);
+	while (1)
+	{
+		if (g_vars.i == 8)
+		{
+			printf("%c\n", btoi(g_vars.buffer));
+			g_vars.i = 0;
+		}
+	}
 }
