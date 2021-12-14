@@ -6,7 +6,7 @@
 /*   By: anggonza <anggonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 15:30:39 by anggonza          #+#    #+#             */
-/*   Updated: 2021/12/10 15:04:04 by anggonza         ###   ########.fr       */
+/*   Updated: 2021/12/14 19:27:53 by anggonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	client(int pid, char *buffer)
 				kill(pid, SIGUSR1);
 			if (temp_send[j] == 0)
 				kill(pid, SIGUSR2);
-			usleep(10000);
+			usleep(500);
 			j++;
 		}
 		j = 0;
@@ -43,6 +43,8 @@ int	main(int argc, char **argv)
 {
 	pid_t	pid;
 
-	pid = atoi(argv[1]);
+	if (argc != 3)
+		return (0);
+	pid = ft_atoi(argv[1]);
 	client(pid, argv[2]);
 }

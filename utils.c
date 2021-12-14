@@ -6,7 +6,7 @@
 /*   By: anggonza <anggonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 16:41:55 by anggonza          #+#    #+#             */
-/*   Updated: 2021/12/10 15:02:04 by anggonza         ###   ########.fr       */
+/*   Updated: 2021/12/14 19:13:43 by anggonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,10 @@ int	btoi(int *tab)
 
 int	power(int first, int pow)
 {
-	int	i;
-	int	res;
-
-	res = 1;
-	i = 0;
-	if (pow == 0)
+	if (pow != 0)
+		return (first * power(first, pow - 1));
+	else
 		return (1);
-	while (i < pow)
-	{
-		res *= first;
-		i++;
-	}
-	return (res);
 }
 
 int	*atob(char string)
@@ -55,7 +46,7 @@ int	*atob(char string)
 	int	i;
 
 	i = 0;
-	ret = (int *)malloc(sizeof(int) * 8);
+	ret = ft_calloc(8, 4);
 	bin = 7;
 	while (i < 8 && string != 0)
 	{
@@ -76,3 +67,51 @@ int	*atob(char string)
 		ret[i] = 0;
 	return (ret);
 }
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	char			*dst;
+	unsigned int	total;
+	unsigned int	i;
+
+	total = count * size;
+	if (!(dst = malloc(total)))
+		return (NULL);
+	i = 0;
+	while (total--)
+	{
+		dst[i] = 0;
+		i++;
+	}
+	return ((void *)dst);
+}
+
+int     ft_atoi(const char *str)
+{
+        long int        i;
+        long int        num;
+        long int        neg;
+
+        neg = 1;
+        num = 0;
+        i = 0;
+        while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\r'
+                || str[i] == '\v' || str[i] == '\b' || str[i] == '\f')
+                i++;
+        if (str[i] == '-' || str[i] == '+')
+        {
+                if (str[i] == '-')
+                        neg = -1;
+                i++;
+        }
+        while (str[i])
+        {
+                if (str[i] >= '0' && str[i] <= '9')
+                        num = (str[i] - 48) + (num * 10);
+                else
+                        return ((int)num * neg);
+                i++;
+        }
+        return ((int)num * neg);
+}
+

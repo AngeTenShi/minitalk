@@ -6,7 +6,7 @@
 /*   By: anggonza <anggonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 15:06:32 by anggonza          #+#    #+#             */
-/*   Updated: 2021/12/10 13:30:32 by anggonza         ###   ########.fr       */
+/*   Updated: 2021/12/14 19:26:57 by anggonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef struct s_vars
 }	t_vars;
 
 int		power(int first, int pow);
-int		btoi(int tab[8]);
+int		btoi(int *tab);
 int		*atob(char string);
-
+int		ft_atoi(const char *str);
+void	*ft_calloc(size_t nmemb, size_t size);
 #endif
