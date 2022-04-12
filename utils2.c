@@ -6,35 +6,35 @@
 /*   By: anggonza <anggonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 11:32:12 by anggonza          #+#    #+#             */
-/*   Updated: 2022/04/12 12:00:09 by anggonza         ###   ########.fr       */
+/*   Updated: 2022/04/12 12:11:38 by anggonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void    ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-        char    *ptr;
-        size_t  i;
+	char	*ptr;
+	size_t	i;
 
-        ptr = s;
-        i = 0;
-        while (i < n)
-        {
-                ptr[i] = '\0';
-                i++;
-        }
+	ptr = s;
+	i = 0;
+	while (i < n)
+	{
+		ptr[i] = '\0';
+		i++;
+	}
 }
 
-void    *ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-        void    *return_value;
+	void	*return_value;
 
-        return_value = malloc(nmemb * size);
-        if (!return_value)
-                return (NULL);
-        ft_bzero(return_value, nmemb * size);
-        return (return_value);
+	return_value = malloc(nmemb * size);
+	if (!return_value)
+		return (NULL);
+	ft_bzero(return_value, nmemb * size);
+	return (return_value);
 }
 
 int	ft_isdigit(int c)

@@ -6,7 +6,7 @@
 /*   By: anggonza <anggonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 16:41:55 by anggonza          #+#    #+#             */
-/*   Updated: 2022/04/12 11:33:00 by anggonza         ###   ########.fr       */
+/*   Updated: 2022/04/12 12:10:24 by anggonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,32 +68,31 @@ int	*atob(char string)
 	return (ret);
 }
 
-int     ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-        long int        i;
-        long int        num;
-        long int        neg;
+	long int	i;
+	long int	num;
+	long int	neg;
 
-        neg = 1;
-        num = 0;
-        i = 0;
-        while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\r'
-                || str[i] == '\v' || str[i] == '\b' || str[i] == '\f')
-                i++;
-        if (str[i] == '-' || str[i] == '+')
-        {
-                if (str[i] == '-')
-                        neg = -1;
-                i++;
-        }
-        while (str[i])
-        {
-                if (str[i] >= '0' && str[i] <= '9')
-                        num = (str[i] - 48) + (num * 10);
-                else
-                        return ((int)num * neg);
-                i++;
-        }
-        return ((int)num * neg);
+	neg = 1;
+	num = 0;
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\r'
+		|| str[i] == '\v' || str[i] == '\b' || str[i] == '\f')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			neg = -1;
+		i++;
+	}
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			num = (str[i] - 48) + (num * 10);
+		else
+			return ((int)num * neg);
+		i++;
+	}
+	return ((int)num * neg);
 }
-

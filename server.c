@@ -6,7 +6,7 @@
 /*   By: anggonza <anggonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 15:07:07 by anggonza          #+#    #+#             */
-/*   Updated: 2022/04/12 11:36:47 by anggonza         ###   ########.fr       */
+/*   Updated: 2022/04/12 12:03:54 by anggonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	sighandler(int signum)
 	}		
 	if (g_vars.i == 8)
 	{
-			ft_printf("%c\n", btoi(g_vars.buffer));
-			g_vars.i = 0;
+		ft_printf("%c\n", btoi(g_vars.buffer));
+		g_vars.i = 0;
 	}
 }
 
@@ -39,5 +39,8 @@ int	main(void)
 	g_vars.i = 0;
 	signal(SIGUSR1, sighandler);
 	signal(SIGUSR2, sighandler);
-	while (1) ;
+	while (1)
+	{
+		continue ;
+	}
 }
