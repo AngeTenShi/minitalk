@@ -6,12 +6,11 @@
 /*   By: anggonza <anggonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 15:07:07 by anggonza          #+#    #+#             */
-/*   Updated: 2021/12/14 19:50:50 by anggonza         ###   ########.fr       */
+/*   Updated: 2022/04/12 11:36:47 by anggonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include "ft_printf.h"
 
 t_vars	g_vars;
 

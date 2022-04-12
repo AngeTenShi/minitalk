@@ -6,7 +6,7 @@
 /*   By: anggonza <anggonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 16:41:55 by anggonza          #+#    #+#             */
-/*   Updated: 2021/12/14 19:13:43 by anggonza         ###   ########.fr       */
+/*   Updated: 2022/04/12 11:33:00 by anggonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,6 @@ int	*atob(char string)
 	if (string == 0)
 		ret[i] = 0;
 	return (ret);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	char			*dst;
-	unsigned int	total;
-	unsigned int	i;
-
-	total = count * size;
-	if (!(dst = malloc(total)))
-		return (NULL);
-	i = 0;
-	while (total--)
-	{
-		dst[i] = 0;
-		i++;
-	}
-	return ((void *)dst);
 }
 
 int     ft_atoi(const char *str)

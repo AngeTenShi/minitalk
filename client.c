@@ -6,12 +6,11 @@
 /*   By: anggonza <anggonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 15:30:39 by anggonza          #+#    #+#             */
-/*   Updated: 2021/12/14 19:27:53 by anggonza         ###   ########.fr       */
+/*   Updated: 2022/04/12 11:59:48 by anggonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <unistd.h>
 
 void	client(int pid, char *buffer)
 {
@@ -44,6 +43,8 @@ int	main(int argc, char **argv)
 	pid_t	pid;
 
 	if (argc != 3)
+		return (0);
+	if (!parse(argv[1]))
 		return (0);
 	pid = ft_atoi(argv[1]);
 	client(pid, argv[2]);
